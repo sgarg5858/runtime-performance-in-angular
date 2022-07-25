@@ -16,17 +16,7 @@ export class EngineerListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getSalary(jobLevel:number):number
-  {
-    if(jobLevel<=2) {
-      if(jobLevel==0) {
-      console.log(jobLevel);
-        return 0;
-      }
-      return 1;
-    }
-    return this.getSalary(jobLevel-1)+this.getSalary(jobLevel-2);
-  }
+  
   delete(index:number)
   {
     console.log(index);
