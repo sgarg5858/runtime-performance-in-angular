@@ -1,11 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Engineer } from '../get-engineers.service';
 
 @Component({
   selector: 'app-add-engineer',
   templateUrl: './add-engineer.component.html',
-  styleUrls: ['./add-engineer.component.scss']
+  styleUrls: ['./add-engineer.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class AddEngineerComponent implements OnInit {
 

@@ -2,8 +2,7 @@
 
 <ul *ngIf="engineers.size>0">
     <app-add-engineer (add)="add($event)"></app-add-engineer>
-    <li *ngFor="let engineer of engineers;let i=index">
-        {{engineer.name}} earns {{getSalary(engineer.jobLevel)}} 
-        <button (click)="delete(i)">Delete</button>
-    </li> 
+    <app-list [engineers]="engineers">
+
+    </app-list>
 </ul>

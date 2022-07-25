@@ -7,13 +7,17 @@ import { ContainerComponent } from './container/container.component';
 import { EngineerListComponent } from './engineer-list/engineer-list.component';
 import { AddEngineerComponent } from './add-engineer/add-engineer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListComponent } from './list/list.component';
+import { SalaryPipe } from './salary.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContainerComponent,
     EngineerListComponent,
-    AddEngineerComponent
+    AddEngineerComponent,
+    ListComponent,
+    SalaryPipe
   ],
   imports: [
     BrowserModule,

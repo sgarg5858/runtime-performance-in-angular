@@ -1,0 +1,7 @@
+<li *ngFor="let engineer of engineers;let i=index;trackBy:trackByName">
+    {{engineer.name}} earns  {{getSalary(engineer.jobLevel)}}
+    <button (click)="delete(i)">Delete</button>
+</li> 
+<!-- {{getSalary(engineer.jobLevel)}} -->
+
+<!-- {{engineer.jobLevel | salary}} -->
