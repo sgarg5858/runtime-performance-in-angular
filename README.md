@@ -22,3 +22,16 @@ So what is happening here is , whenever we enter a input, angular runs change de
 Problem is Angular can't know if the return value of function will be same or not so it ends up calling it again & again for no reason.
 
 We can make use of pure pipes here!
+
+
+Lets optimize step by step
+
+First step => We will implement onPush Change Detection Strategy =>
+Because what happens is when we type in frontend section , it runs change detection for both frontend & backend lists =>
+One thing is for sure when we are interacting with frontend section we dont want backend to be checked.
+Since we have instances of engineer-list components => we can use immutables library to create new references on changes (efficiently) & we use 
+onPush, so angular runs only in one section where interaction is happening!
+
+Results=>
+
+1. Performance Tab & Angular devtools you can compare results for both with & without onPush for engineer-list!
