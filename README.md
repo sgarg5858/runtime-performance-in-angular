@@ -1,27 +1,37 @@
-# RuntimePerformanceInAngular
+1. unoptimized branch:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
+1. try adding employee from any of inputs you will notice delay (why delay in input?)
 
-## Development server
+1. We can see why its so slow?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Using performance Tab:
 
-## Code scaffolding
+1 Start the performance measurement & start typing in input, and then you can take a look in summary, we spend a lot of time
+  scripting
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. If we take a look in bottom up tab, we can see what functions are frequently called,or where we spend a lot of time.
 
-## Build
+3. We can see we our most of time goes on getSalary function (fibonacci), but why its getting called so many times?
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. Angular Devtools
 
-## Running unit tests
+We can also use Angular Devtools to take a look for which components change detection is getting triggered?
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+So what is happening here is , whenever we enter a input, angular runs change detection (bcoz of dom events(Async)), and since we have a template expression which shows salary for a engineer , its getting called for every employee everytime change detection runs, & thats computationally expensive. So we are unnecesserially calling getSalary function too many times?
 
-## Running end-to-end tests
+Problem is Angular can't know if the return value of function will be same or not so it ends up calling it again & again for no reason.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+We can make use of pure pipes here!
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Lets optimize step by step
+
+First step => We will implement onPush Change Detection Strategy =>
+Because what happens is when we type in frontend section , it runs change detection for both frontend & backend lists =>
+One thing is for sure when we are interacting with frontend section we dont want backend to be checked.
+Since we have instances of engineer-list components => we can use immutables library to create new references on changes (efficiently) & we use 
+onPush, so angular runs only in one section where interaction is happening!
+
+Results=>
+
+1. Performance Tab & Angular devtools you can compare results for both with & without onPush for engineer-list!
