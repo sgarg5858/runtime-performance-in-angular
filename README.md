@@ -37,3 +37,9 @@ Results=>
 1. Performance Tab & Angular devtools you can compare results for both with & without onPush for engineer-list!
 
 After doing above, we are able to skip the whole section but still we are recalculating the salaries of all employees, when we are typing because input & list are in the same component , what we can do is we can create 2 sub components 1 for input 2 for list and we can use onPush for both components thus when ever there is some change in input and that doesn't affect list we don't run change detection for list, we only check list when we add new engineer
+
+
+Results=> We have improved a lot as we are not checking list & not doing fibonacci computations now when we type,
+          but we are still recomputing when we add, we can also avoid that!
+          
+          How ? => using pure pipes!
