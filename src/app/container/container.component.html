@@ -1,5 +1,12 @@
-<app-engineer-list [heading]="'Frontend Engineers'" [engineers]="frontendEngineers">
+<app-engineer-list 
+[heading]="'Frontend Engineers'" 
+[engineers]="frontendEngineers" 
+(addEngineer)="addFrontend($event)">
 </app-engineer-list>   
 
-<app-engineer-list [heading]="'Backend Engineers'" [engineers]="backendEngineers">
+<app-engineer-list 
+[heading]="'Backend Engineers'" 
+[engineers]="backendEngineers"
+(addEngineer)="addBackend($event)">
+>
 </app-engineer-list>   

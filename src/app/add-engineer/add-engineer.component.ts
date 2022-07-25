@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Engineer } from '../get-engineers.service';
 
 @Component({
   selector: 'app-add-engineer',
@@ -12,9 +13,11 @@ export class AddEngineerComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  @Output() add = new EventEmitter<Engineer>();
   engineerName=new FormControl('',[Validators.required])
   addEngineer()
   {
-    console.log(this.engineerName)
+    let engineer = new Engineer(this.engineerName.value,25,30*Math.random());
+    this.add.emit(engineer);
   }
 }

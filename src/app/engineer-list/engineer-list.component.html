@@ -1,7 +1,7 @@
 <h1>{{heading}}</h1>
 
-<ul *ngIf="engineers.length>0">
-    <app-add-engineer></app-add-engineer>
+<ul *ngIf="engineers.size>0">
+    <app-add-engineer (add)="add($event)"></app-add-engineer>
     <li *ngFor="let engineer of engineers;let i=index">
         {{engineer.name}} earns {{getSalary(engineer.jobLevel)}} 
         <button (click)="delete(i)">Delete</button>
